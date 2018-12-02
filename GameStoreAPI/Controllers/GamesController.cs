@@ -24,7 +24,7 @@ namespace GameStoreAPI.Controllers
         [HttpGet]
         public IEnumerable<Game> Get()
         {
-            return db.Games;
+            return db.Games.ToList();
         }
 
         // GET: api/Games/5
