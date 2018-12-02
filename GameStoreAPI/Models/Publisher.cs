@@ -8,10 +8,10 @@ namespace GameStoreAPI.Models
 {
     public class Publisher
     {
-        public Publisher()
-        {
-            games = new HashSet<Game>();
-        }
+        //public Publisher()
+        //{
+        //    games = new HashSet<Game>();
+        //}
 
         //public virtual ICollection<Game> games { get; set; }
 
