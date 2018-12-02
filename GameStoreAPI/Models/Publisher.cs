@@ -13,7 +13,7 @@ namespace GameStoreAPI.Models
             games = new HashSet<Game>();
         }
 
-        public virtual ICollection<Game> games { get; set; }
+        //public virtual ICollection<Game> games { get; set; }
 
         [Key]
         public int id { get; set; }
