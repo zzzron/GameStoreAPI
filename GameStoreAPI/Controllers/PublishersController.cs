@@ -28,28 +28,59 @@ namespace GameStoreAPI.Controllers
         }
 
         // GET: api/Publishers/5
-        [HttpGet("{id}", Name = "Get")]
-        public string Get(int id)
+        [HttpGet("{id}")]
+        public ActionResult Get(int id)
         {
-            return "value";
+            Publisher publisher = db.Publishers.SingleOrDefault(p => p.id == id);
+
+            if (publisher == null)
+            {
+                return NotFound();
+            }
+            return Ok(publisher);
         }
 
         // POST: api/Publishers
         [HttpPost]
-        public void Post([FromBody] string value)
+        public ActionResult Post([FromBody] Publisher publisher)
         {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+            db.Publishers.Add(publisher);
+            db.SaveChanges();
+            return CreatedAtAction("Post", new { id = publisher.id });
         }
 
         // PUT: api/Publishers/5
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        public ActionResult Put(int id, [FromBody] Publisher publisher)
         {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest();
+            }
+
+            db.Entry(publisher).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
+            db.SaveChanges();
+            return AcceptedAtAction("Put", publisher);
         }
 
         // DELETE: api/ApiWithActions/5
         [HttpDelete("{id}")]
-        public void Delete(int id)
+        public ActionResult Delete(int id)
         {
+            Publisher publisher = db.Publishers.SingleOrDefault(p => p.id == id);
+
+            if (publisher == null)
+            {
+                return BadRequest();
+            }
+
+            db.Publishers.Remove(publisher);
+            db.SaveChanges();
+            return Ok();
         }
     }
 }
