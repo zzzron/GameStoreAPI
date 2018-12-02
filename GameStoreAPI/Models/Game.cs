@@ -15,9 +15,9 @@ namespace GameStoreAPI.Models
 
         [Required]
         public string title { get; set; }
-        public string publisher { get; set; }
-        public virtual Publisher publisher1 { get; set; }
+        public string publisher { get; set; }        
         public int? release_year { get; set; }
         public decimal? price { get; set; }
+        public virtual Publisher publisher1 { get; set; }
     }
 }
