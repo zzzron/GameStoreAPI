@@ -7,7 +7,6 @@ using System.Threading.Tasks;
 
 namespace GameStoreAPI.Models
 {
-    [Table("Game")]
     public class Game
     {
         [Key]
